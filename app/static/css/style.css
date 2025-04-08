@@ -1,0 +1,152 @@
+:root {
+    --primary-color: #4a6bff;
+    --secondary-color: #ff6b6b;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --border-color: #dee2e6;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.game-board {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+    height: 100px;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: white;
+    border-radius: 5px;
+}
+
+.cell:hover {
+    background-color: var(--background-color);
+    transform: scale(1.05);
+}
+
+.cell.x {
+    color: var(--primary-color);
+}
+
+.cell.o {
+    color: var(--secondary-color);
+}
+
+.cell-content {
+    transition: transform 0.3s ease;
+}
+
+.cell.x .cell-content::before {
+    content: '×';
+    font-size: 3rem;
+}
+
+.cell.o .cell-content::before {
+    content: '○';
+    font-size: 3rem;
+}
+
+.game-status {
+    min-height: 50px;
+}
+
+#status {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3a5bef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-score {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.player-score h4 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.player-score .score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.cell-content {
+    animation: fadeIn 0.3s ease;
+}
+
+.cell.x .cell-content,
+.cell.o .cell-content {
+    animation: popIn 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .cell {
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .player-score {
+        padding: 10px;
+    }
+    
+    .player-score .score {
+        font-size: 1.5rem;
+    }
+} 

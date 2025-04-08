@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4 mb-4 text-primary">Tic Tac Toe</h1>
+    
+    <div class="game-status mb-4">
+        <div class="alert alert-info" role="alert">
+            <h3 id="status" class="mb-0">
+                <i class="fas fa-user"></i> Player X's turn
+            </h3>
+        </div>
+    </div>
+
+    <div class="game-board mb-4">
+        {% for row in range(3) %}
+        <div class="row justify-content-center">
+            {% for col in range(3) %}
+            <div class="col-4">
+                <div class="cell" data-row="{{ row }}" data-col="{{ col }}">
+                    <span class="cell-content"></span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="game-controls">
+        <button id="reset" class="btn btn-primary btn-lg">
+            <i class="fas fa-redo"></i> New Game
+        </button>
+    </div>
+
+    <div class="mt-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="player-score">
+                    <h4>Player X</h4>
+                    <div class="score">0</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="player-score">
+                    <h4>Player O</h4>
+                    <div class="score">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
